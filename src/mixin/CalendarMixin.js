@@ -1,7 +1,7 @@
  import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import moment from 'moment';
+import moment from "jalali-moment";
 import { isAllowedDate, getTodayTime } from '../util/index';
 
 function noop() {

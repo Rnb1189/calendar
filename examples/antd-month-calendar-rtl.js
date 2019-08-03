@@ -9,20 +9,23 @@ import DatePicker from "rnb-rc-calendar/src/Picker";
 
 import zhCN from "rnb-rc-calendar/src/locale/zh_CN";
 import enUS from "rnb-rc-calendar/src/locale/en_US";
+import faIR from "rnb-rc-calendar/src/locale/fa_IR";
 
 import moment from "moment";
 import "moment/locale/zh-cn";
 import "moment/locale/en-gb";
+import "moment/locale/fa";
 
 const format = "YYYY-MM";
 const cn = location.search.indexOf("cn") !== -1;
 
 const now = moment();
-if (cn) {
-  now.locale("zh-cn").utcOffset(8);
-} else {
-  now.locale("en-gb").utcOffset(0);
-}
+// if (cn) {
+//   now.locale("zh-cn").utcOffset(8);
+// } else {
+//   now.locale("en-gb").utcOffset(0);
+// }
+now.locale("fa-ir").utcOffset(0);
 
 const defaultCalendarValue = now.clone();
 defaultCalendarValue.add(-1, "month");
@@ -63,9 +66,7 @@ class Demo extends React.Component {
 
   render() {
     const state = this.state;
-    const calendar = (
-      <MonthCalendar locale={cn ? zhCN : enUS} style={{ zIndex: 1000 }} />
-    );
+    const calendar = <MonthCalendar locale={faIR} style={{ zIndex: 1000 }} />;
     return (
       <div style={{ width: 240, margin: 20 }}>
         <div style={{ marginBottom: 10 }}>
@@ -143,19 +144,19 @@ ReactDOM.render(
     }}
   >
     <MonthCalendar
-      locale={cn ? zhCN : enUS}
+      locale={faIR}
       style={{ zIndex: 1000 }}
       disabledDate={disabledDate}
       onSelect={onStandaloneSelect}
       onChange={onStandaloneChange}
-      monthCellContentRender={onMonthCellContentRender}
+      // monthCellContentRender={onMonthCellContentRender}
       defaultValue={defaultCalendarValue}
-      renderFooter={() => "extra footer"}
+      renderFooter={() => "extra footer1223"}
     />
 
-    <div style={{ marginTop: 200 }}>
+    {/* <div style={{ marginTop: 100 }}>
       <Demo defaultValue={now} />
-    </div>
+    </div> */}
   </div>,
   document.getElementById("__react-content")
 );

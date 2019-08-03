@@ -1,13 +1,13 @@
 /* eslint react/no-multi-comp:0, no-console:0 */
 
-import "rc-calendar/assets/index.less";
+import "rnb-rc-calendar/assets/index.less";
 import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import Calendar from "rc-calendar";
-import DatePicker from "rc-calendar/src/Picker";
-import zhCN from "rc-calendar/src/locale/zh_CN";
-import enUS from "rc-calendar/src/locale/en_US";
+import Calendar from "rnb-rc-calendar";
+import DatePicker from "rnb-rc-calendar/src/Picker";
+import zhCN from "rnb-rc-calendar/src/locale/zh_CN";
+import enUS from "rnb-rc-calendar/src/locale/en_US";
 
 import moment from "moment";
 import "moment/locale/zh-cn";
@@ -82,12 +82,12 @@ class Demo extends React.Component {
       current.week() === selectedValue.week()
     ) {
       return (
-        <div className="rc-calendar-selected-day">
-          <div className="rc-calendar-date">{current.date()}</div>
+        <div className="rnb-rc-calendar-selected-day">
+          <div className="rnb-rc-calendar-date">{current.date()}</div>
         </div>
       );
     }
-    return <div className="rc-calendar-date">{current.date()}</div>;
+    return <div className="rnb-rc-calendar-date">{current.date()}</div>;
   };
 
   lastWeek = () => {

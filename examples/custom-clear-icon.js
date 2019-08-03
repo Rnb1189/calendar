@@ -1,10 +1,10 @@
 /* eslint react/no-multi-comp:0, no-console:0 */
 
-import "rc-calendar/assets/index.less";
+import "rnb-rc-calendar/assets/index.less";
 import React from "react";
 import ReactDOM from "react-dom";
-import Calendar from "rc-calendar";
-import RangeCalendar from "rc-calendar/src/RangeCalendar";
+import Calendar from "rnb-rc-calendar";
+import RangeCalendar from "rnb-rc-calendar/src/RangeCalendar";
 import "rc-time-picker/assets/index.css";
 
 import "moment/locale/zh-cn";

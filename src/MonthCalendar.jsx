@@ -10,7 +10,7 @@ import {
   calendarMixinDefaultProps,
 } from './mixin/CalendarMixin';
 import { commonMixinWrapper, propType, defaultProp } from './mixin/CommonMixin';
-import moment from 'moment';
+import moment from "jalali-moment";
 
 class MonthCalendar extends React.Component {
   static propTypes = {

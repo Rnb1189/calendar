@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import keyCode from 'rc-util/lib/KeyCode';
-import moment from 'moment';
+import moment from "jalali-moment";
 import { mount, render } from 'enzyme';
 import TimePickerPanel from 'rc-time-picker/lib/Panel';
 import Calendar from '../src/Calendar';

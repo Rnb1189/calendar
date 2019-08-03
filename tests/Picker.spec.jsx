@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import moment from "jalali-moment";
 import { mount } from 'enzyme';
 import keyCode from 'rc-util/lib/KeyCode';
 import Calendar from '../index';
