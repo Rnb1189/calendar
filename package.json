@@ -91,6 +91,7 @@
   "dependencies": {
     "babel-runtime": "6.x",
     "classnames": "2.x",
+    "jalali-moment": "^3.3.3",
     "moment": "2.x",
     "prop-types": "^15.5.8",
     "rc-trigger": "^2.2.0",

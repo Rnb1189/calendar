@@ -1,4 +1,4 @@
-export function goStartMonth(time) {
+ export function goStartMonth(time) {
   return time.clone().startOf('month');
 }
 

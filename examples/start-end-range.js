@@ -1,39 +1,39 @@
 /* eslint react/no-multi-comp:0, no-console:0, react/prop-types:0 */
 
-import 'rc-calendar/assets/index.less';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import RangeCalendar from 'rc-calendar/src/RangeCalendar';
-import DatePicker from 'rc-calendar/src/Picker';
+import "rc-calendar/assets/index.less";
+import React from "react";
+import ReactDOM from "react-dom";
+import RangeCalendar from "rc-calendar/src/RangeCalendar";
+import DatePicker from "rc-calendar/src/Picker";
 
-import zhCN from 'rc-calendar/src/locale/zh_CN';
-import enUS from 'rc-calendar/src/locale/en_US';
+import zhCN from "rc-calendar/src/locale/zh_CN";
+import enUS from "rc-calendar/src/locale/en_US";
 
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-import 'moment/locale/en-gb';
+import moment from "moment";
+import "moment/locale/zh-cn";
+import "moment/locale/en-gb";
 
-const format = 'YYYY-MM-DD';
+const format = "YYYY-MM-DD";
 
-const fullFormat = 'YYYY-MM-DD dddd';
-const cn = location.search.indexOf('cn') !== -1;
+const fullFormat = "YYYY-MM-DD dddd";
+const cn = location.search.indexOf("cn") !== -1;
 
 const now = moment();
 if (cn) {
-  now.locale('zh-cn').utcOffset(8);
+  now.locale("zh-cn").utcOffset(8);
 } else {
-  now.locale('en-gb').utcOffset(0);
+  now.locale("en-gb").utcOffset(0);
 }
 
 class Picker extends React.Component {
   state = {
-    hoverValue: [],
+    hoverValue: []
   };
 
-  onHoverChange = (hoverValue) => {
+  onHoverChange = hoverValue => {
     console.log(hoverValue);
     this.setState({ hoverValue });
-  }
+  };
 
   render() {
     const props = this.props;
@@ -48,7 +48,8 @@ class Picker extends React.Component {
         format={format}
         onChange={props.onChange}
         disabledDate={props.disabledDate}
-      />);
+      />
+    );
     return (
       <DatePicker
         open={this.props.open}
@@ -56,21 +57,20 @@ class Picker extends React.Component {
         calendar={calendar}
         value={props.value}
       >
-        {
-          () => {
-            return (
-              <span>
-                <input
-                  placeholder="请选择日期"
-                  style={{ width: 250 }}
-                  readOnly
-                  value={showValue && showValue.format(fullFormat) || ''}
-                />
-                </span>
-            );
-          }
-        }
-      </DatePicker>);
+        {() => {
+          return (
+            <span>
+              <input
+                placeholder="请选择日期"
+                style={{ width: 250 }}
+                readOnly
+                value={(showValue && showValue.format(fullFormat)) || ""}
+              />
+            </span>
+          );
+        }}
+      </DatePicker>
+    );
   }
 }
 
@@ -79,36 +79,36 @@ class Demo extends React.Component {
     startValue: null,
     endValue: null,
     startOpen: false,
-    endOpen: false,
+    endOpen: false
   };
 
-  onStartOpenChange = (startOpen) => {
+  onStartOpenChange = startOpen => {
     this.setState({
-      startOpen,
+      startOpen
     });
-  }
+  };
 
-  onEndOpenChange = (endOpen) => {
+  onEndOpenChange = endOpen => {
     this.setState({
-      endOpen,
+      endOpen
     });
-  }
+  };
 
-  onStartChange = (value) => {
+  onStartChange = value => {
     this.setState({
       startValue: value[0],
       startOpen: false,
-      endOpen: true,
+      endOpen: true
     });
-  }
+  };
 
-  onEndChange = (value) => {
+  onEndChange = value => {
     this.setState({
-      endValue: value[1],
+      endValue: value[1]
     });
-  }
+  };
 
-  disabledStartDate = (endValue) => {
+  disabledStartDate = endValue => {
     if (!endValue) {
       return false;
     }
@@ -116,8 +116,8 @@ class Demo extends React.Component {
     if (!startValue) {
       return false;
     }
-    return endValue.diff(startValue, 'days') < 0;
-  }
+    return endValue.diff(startValue, "days") < 0;
+  };
 
   render() {
     const state = this.state;
@@ -147,9 +147,9 @@ class Demo extends React.Component {
             onChange={this.onEndChange}
           />
         </p>
-      </div>);
+      </div>
+    );
   }
 }
 
-
-ReactDOM.render(<Demo />, document.getElementById('__react-content'));
+ReactDOM.render(<Demo />, document.getElementById("__react-content"));
