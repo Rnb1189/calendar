@@ -1,7 +1,7 @@
- import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { getTodayTime, getMonthName } from '../util/index';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import { getTodayTime, getMonthName } from "../util/index";
 
 const ROW = 4;
 const COL = 3;
@@ -12,30 +12,28 @@ function chooseMonth(month) {
   this.setAndSelectValue(next);
 }
 
-function noop() {
-
-}
+function noop() {}
 
 class MonthTable extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: props.value,
+      value: props.value
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
+    if ("value" in nextProps) {
       this.setState({
-        value: nextProps.value,
+        value: nextProps.value
       });
     }
   }
 
   setAndSelectValue(value) {
     this.setState({
-      value,
+      value
     });
     this.props.onSelect(value);
   }
@@ -53,7 +51,7 @@ class MonthTable extends Component {
         months[rowIndex][colIndex] = {
           value: index,
           content,
-          title: content,
+          title: content
         };
         index++;
       }
@@ -80,8 +78,8 @@ class MonthTable extends Component {
           [`${prefixCls}-cell`]: 1,
           [`${prefixCls}-cell-disabled`]: disabled,
           [`${prefixCls}-selected-cell`]: monthData.value === currentMonth,
-          [`${prefixCls}-current-cell`]: today.year() === value.year() &&
-          monthData.value === today.month(),
+          [`${prefixCls}-current-cell`]:
+            today.year() === value.year() && monthData.value === today.month()
         };
         let cellEl;
         if (cellRender) {
@@ -97,11 +95,7 @@ class MonthTable extends Component {
           } else {
             content = monthData.content;
           }
-          cellEl = (
-            <a className={`${prefixCls}-month`}>
-              {content}
-            </a>
-          );
+          cellEl = <a className={`${prefixCls}-month`}>{content}</a>;
         }
         return (
           <td
@@ -112,28 +106,31 @@ class MonthTable extends Component {
             className={classnames(classNameMap)}
           >
             {cellEl}
-          </td>);
+          </td>
+        );
       });
-      return (<tr key={index} role="row">{tds}</tr>);
+      return (
+        <tr key={index} role="row">
+          {tds}
+        </tr>
+      );
     });
 
     return (
       <table className={`${prefixCls}-table`} cellSpacing="0" role="grid">
-        <tbody className={`${prefixCls}-tbody`}>
-        {monthsEls}
-        </tbody>
+        <tbody className={`${prefixCls}-tbody`}>{monthsEls}</tbody>
       </table>
     );
   }
 }
 
 MonthTable.defaultProps = {
-  onSelect: noop,
+  onSelect: noop
 };
 MonthTable.propTypes = {
   onSelect: PropTypes.func,
   cellRender: PropTypes.func,
   prefixCls: PropTypes.string,
-  value: PropTypes.object,
+  value: PropTypes.object
 };
 export default MonthTable;
