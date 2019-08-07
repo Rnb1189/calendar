@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
+import moment from "moment"; //import moment from "./jalali/jalali-moment";
 import classnames from "classnames";
 import { polyfill } from "react-lifecycles-compat";
 import KeyCode from "rc-util/lib/KeyCode";
@@ -214,7 +214,7 @@ class RangeCalendar extends React.Component {
       return;
     }
 
-    const { keyCode } = event;
+    let { keyCode } = event;
     const ctrlKey = event.ctrlKey || event.metaKey;
 
     const {
@@ -284,6 +284,12 @@ class RangeCalendar extends React.Component {
 
       return nextHoverTime;
     };
+
+    //NEw
+    if (this.props.isRtl) {
+      if (keyCode === KeyCode.LEFT) keyCode = KeyCode.RIGHT;
+      else if (keyCode === KeyCode.RIGHT) keyCode = KeyCode.LEFT;
+    }
 
     switch (keyCode) {
       case KeyCode.DOWN:
@@ -726,7 +732,11 @@ class RangeCalendar extends React.Component {
       [`${prefixCls}-show-time-picker`]: showTimePicker,
       [`${prefixCls}-week-number`]: props.showWeekNumber
     };
-    const classes = classnames(className);
+    //NEw:
+    const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
+
+    // const classes = classnames(className);
+    const classes = classnames(className, rtlClass);
     const newProps = {
       selectedValue: state.selectedValue,
       onSelect: this.onSelect,
@@ -779,14 +789,15 @@ class RangeCalendar extends React.Component {
         onKeyDown={this.onKeyDown}
       >
         {props.renderSidebar()}
-        <div className={`${prefixCls}-panel`}>
+        {/* <div className={`${prefixCls}-panel`}> */}
+        <div className={`${prefixCls}-panel ${rtlClass}`}>
           {showClear && selectedValue[0] && selectedValue[1] ? (
             <a role="button" title={locale.clear} onClick={this.clear}>
               {clearIcon || <span className={`${prefixCls}-clear-btn`} />}
             </a>
           ) : null}
           <div
-            className={`${prefixCls}-date-panel`}
+            className={`${prefixCls}-date-panel  ${rtlClass}`}
             onMouseLeave={type !== "both" ? this.onDatePanelLeave : undefined}
             onMouseEnter={type !== "both" ? this.onDatePanelEnter : undefined}
           >

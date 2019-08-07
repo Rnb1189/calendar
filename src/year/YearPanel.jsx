@@ -65,6 +65,9 @@ export default class YearPanel extends React.Component {
       const endYear = startYear + 9;
       const prefixCls = this.prefixCls;
 
+      //NEw:
+      const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
+
       const yeasEls = years.map((row, index) => {
          const tds = row.map(yearData => {
             const classNameMap = {
@@ -103,7 +106,8 @@ export default class YearPanel extends React.Component {
       const footer = renderFooter && renderFooter("year");
 
       return (
-         <div className={this.prefixCls}>
+         // <div className={this.prefixCls}>
+         <div className={`${this.prefixCls} ${rtlClass}`}>
             <div>
                <div className={`${prefixCls}-header`}>
                   <a

@@ -16,7 +16,7 @@ import { commonMixinWrapper, propType, defaultProp } from "./mixin/CommonMixin";
 import DateInput from "./date/DateInput";
 import { getTimeConfig, getTodayTime, syncTime } from "./util";
 import { goStartMonth, goEndMonth, goTime } from "./util/toTime";
-import moment from "jalali-moment";
+import moment from "moment"; //import moment from "./jalali/jalali-moment";
 
 function noop() {}
 
@@ -29,6 +29,8 @@ const getMomentObjectIfValid = date => {
 
 class Calendar extends React.Component {
    static propTypes = {
+      //NEw:
+      isRtl: PropTypes.bool,
       ...calendarMixinPropTypes,
       ...propType,
       prefixCls: PropTypes.string,
@@ -64,6 +66,8 @@ class Calendar extends React.Component {
    };
 
    static defaultProps = {
+      //NEw:
+      isRtl: false,
       ...calendarMixinDefaultProps,
       ...defaultProp,
       showToday: true,
@@ -104,7 +108,19 @@ class Calendar extends React.Component {
       if (event.target.nodeName.toLowerCase() === "input") {
          return undefined;
       }
-      const keyCode = event.keyCode;
+      let keyCode = event.keyCode;
+      //NEw
+      if (this.props.isRtl) {
+         // var a = keyCode;
+
+         if (keyCode === KeyCode.LEFT) keyCode = KeyCode.RIGHT;
+         else if (keyCode === KeyCode.RIGHT) keyCode = KeyCode.LEFT;
+
+         // console.log(
+         //    a === KeyCode.LEFT ? "left" : "right",
+         //    keyCode === KeyCode.LEFT ? "left" : "right"
+         // );
+      }
       // mac
       const ctrlKey = event.ctrlKey || event.metaKey;
       const { disabledDate } = this.props;
@@ -307,6 +323,8 @@ class Calendar extends React.Component {
 
       const dateInputElement = props.showDateInput ? (
          <DateInput
+            //NEw:
+            isRtl={this.props.isRtl}
             format={this.getFormat()}
             key="date-input"
             value={value}
@@ -337,6 +355,8 @@ class Calendar extends React.Component {
                className={`${prefixCls}-date-panel`}
             >
                <CalendarHeader
+                  //NEw:
+                  isRtl={this.props.isRtl}
                   locale={locale}
                   mode={mode}
                   value={value}
@@ -355,6 +375,8 @@ class Calendar extends React.Component {
                ) : null}
                <div className={`${prefixCls}-body`}>
                   <DateTable
+                     //NEw:
+                     isRtl={this.props.isRtl}
                      locale={locale}
                      value={value}
                      selectedValue={selectedValue}
@@ -367,6 +389,8 @@ class Calendar extends React.Component {
                </div>
 
                <CalendarFooter
+                  //NEw:
+                  isRtl={this.props.isRtl}
                   showOk={props.showOk}
                   mode={mode}
                   renderFooter={props.renderFooter}

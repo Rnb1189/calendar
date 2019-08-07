@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import moment from "jalali-moment";
+import moment from "moment"; //import moment from "../jalali/jalali-moment";
 import { isAllowedDate, getTodayTime } from "../util/index";
 
 function noop() {}
@@ -65,6 +65,9 @@ export const calendarMixinWrapper = ComposeComponent =>
       const prefixCls = props.prefixCls;
 
       const className = {
+        //NEw:
+        "a-rtl": this.props.isRtl,
+        "a-ltr": !this.props.isRtl,
         [prefixCls]: 1,
         [`${prefixCls}-hidden`]: !props.visible,
         [props.className]: !!props.className,

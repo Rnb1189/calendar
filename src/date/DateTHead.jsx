@@ -1,6 +1,6 @@
 import React from "react";
 import DateConstants from "./DateConstants";
-import moment from "jalali-moment";
+import moment from "moment"; //import moment from "../jalali/jalali-moment";
 
 export default class DateTHead extends React.Component {
    render() {

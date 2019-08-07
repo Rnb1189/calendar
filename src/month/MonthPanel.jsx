@@ -70,9 +70,13 @@ class MonthPanel extends React.Component {
       const prefixCls = this.prefixCls;
 
       const footer = renderFooter && renderFooter("month");
+      //NEw:
+      const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
 
       return (
-         <div className={prefixCls} style={props.style}>
+         //NEw:
+         // <div className={prefixCls} style={props.style}>
+         <div className={`${prefixCls} ${rtlClass}`} style={props.style}>
             <div>
                <div className={`${prefixCls}-header`}>
                   <a
@@ -103,6 +107,8 @@ class MonthPanel extends React.Component {
                </div>
                <div className={`${prefixCls}-body`}>
                   <MonthTable
+                     //NEw:
+                     isRtl={this.props.isRtl}
                      disabledDate={props.disabledDate}
                      onSelect={this.setAndSelectValue}
                      locale={locale}

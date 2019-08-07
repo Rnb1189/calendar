@@ -54,6 +54,7 @@ class Demo extends React.Component {
           ))}
         </select>
         <Calendar
+          isRtl={true}
           mode={this.state.mode}
           onPanelChange={this.handlePanelChange}
         />
@@ -81,6 +82,7 @@ class Demo extends React.Component {
           ))}
         </select>
         <RangeCalendar
+          isRtl={true}
           mode={[this.state.rangeStartMode, this.state.rangeEndMode]}
           onPanelChange={this.handleRangePanelChange}
         />

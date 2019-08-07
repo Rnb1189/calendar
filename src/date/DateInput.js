@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import KeyCode from "rc-util/lib/KeyCode";
 import { polyfill } from "react-lifecycles-compat";
-import moment from "jalali-moment";
+import moment from "moment"; //import moment from "../jalali/jalali-moment";
 import { formatDate } from "../util";
 
 let cachedSelectionStart;
@@ -12,6 +12,8 @@ let dateInputInstance;
 
 class DateInput extends React.Component {
   static propTypes = {
+    //NEw
+    isRtl: PropTypes.bool,
     prefixCls: PropTypes.string,
     timePicker: PropTypes.object,
     value: PropTypes.object,

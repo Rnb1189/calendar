@@ -2,7 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import keyCode from 'rc-util/lib/KeyCode';
-import moment from "jalali-moment";
+import moment from "moment";
 import MonthCalendar from '../src/MonthCalendar';
 
 describe('MonthCalendar', () => {

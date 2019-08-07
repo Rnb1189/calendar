@@ -23,6 +23,8 @@ function showIf(condition, el) {
 
 export default class CalendarHeader extends React.Component {
    static propTypes = {
+      //NEw:
+      isRtl: PropTypes.bool,
       prefixCls: PropTypes.string,
       value: PropTypes.object,
       onValueChange: PropTypes.func,
@@ -37,6 +39,9 @@ export default class CalendarHeader extends React.Component {
    };
 
    static defaultProps = {
+      //NEw:
+      isRtl: false,
+
       enableNext: 1,
       enablePrev: 1,
       onPanelChange() {},
@@ -168,6 +173,8 @@ export default class CalendarHeader extends React.Component {
       if (mode === "month") {
          panel = (
             <MonthPanel
+               //NEw:
+               isRtl={this.props.isRtl}
                locale={locale}
                value={value}
                rootPrefixCls={prefixCls}
@@ -184,6 +191,8 @@ export default class CalendarHeader extends React.Component {
       if (mode === "year") {
          panel = (
             <YearPanel
+               //NEw:
+               isRtl={this.props.isRtl}
                locale={locale}
                defaultValue={value}
                rootPrefixCls={prefixCls}
@@ -196,6 +205,8 @@ export default class CalendarHeader extends React.Component {
       if (mode === "decade") {
          panel = (
             <DecadePanel
+               //NEw:
+               isRtl={this.props.isRtl}
                locale={locale}
                defaultValue={value}
                rootPrefixCls={prefixCls}
@@ -205,8 +216,11 @@ export default class CalendarHeader extends React.Component {
          );
       }
 
+      //NEw:
+      const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
+
       return (
-         <div className={`${prefixCls}-header`}>
+         <div className={`${prefixCls}-header ${rtlClass}`}>
             <div style={{ position: "relative" }}>
                {showIf(
                   enablePrev && !showTimePicker,

@@ -2,7 +2,7 @@
 import React from 'react';
 import Select from 'rc-select';
 import { render, mount } from 'enzyme';
-import moment from "jalali-moment";
+import moment from "moment";
 import FullCalendar from '../src/FullCalendar';
 
 describe('FullCalendar', () => {

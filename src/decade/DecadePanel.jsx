@@ -44,6 +44,9 @@ export default class DecadePanel extends React.Component {
       let index = 0;
       const prefixCls = this.prefixCls;
 
+      //NEw:
+      const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
+
       for (let rowIndex = 0; rowIndex < ROW; rowIndex++) {
          decades[rowIndex] = [];
          for (let colIndex = 0; colIndex < COL; colIndex++) {
@@ -100,7 +103,8 @@ export default class DecadePanel extends React.Component {
       });
 
       return (
-         <div className={this.prefixCls}>
+         // <div className={this.prefixCls}>
+         <div className={`${this.prefixCls} ${rtlClass}`}>
             <div className={`${prefixCls}-header`}>
                <a
                   className={`${prefixCls}-prev-century-btn`}

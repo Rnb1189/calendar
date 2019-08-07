@@ -11,10 +11,9 @@ import zhCN from "rnb-rc-calendar/src/locale/zh_CN";
 import enUS from "rnb-rc-calendar/src/locale/en_US";
 import faIR from "rnb-rc-calendar/src/locale/fa_IR";
 
-import moment from "moment";
-import "moment/locale/zh-cn";
-import "moment/locale/en-gb";
-import "moment/locale/fa";
+import moment from "moment"; //import moment from "../src/jalali/jalali-moment";
+// import "moment/locale/zh-cn";
+// import "moment/locale/en-gb";
 
 const format = "YYYY-MM";
 const cn = location.search.indexOf("cn") !== -1;

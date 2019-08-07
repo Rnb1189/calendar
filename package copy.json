@@ -1,6 +1,6 @@
 {
    "name": "rnb-rc-calendar",
-   "version": "9.15.11",
+   "version": "9.15.6",
    "description": "React Calendar",
    "keywords": [
       "react",
@@ -89,6 +89,8 @@
    "dependencies": {
       "babel-runtime": "6.x",
       "classnames": "2.x",
+      "jalali-moment": "^3.3.3",
+      "moment": "2.x",
       "prop-types": "^15.5.8",
       "rc-trigger": "^2.2.0",
       "rc-util": "^4.1.1",

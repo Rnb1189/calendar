@@ -84,6 +84,8 @@ export default class CalendarPart extends React.Component {
 
     const dateInputElement = props.showDateInput && (
       <DateInput
+        //NEw
+        isRtl={this.props.isRtl}
         format={format}
         locale={locale}
         prefixCls={prefixCls}
@@ -101,8 +103,13 @@ export default class CalendarPart extends React.Component {
       />
     );
 
+    //NEw:
+    const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
+
     return (
-      <div className={`${rangeClassName}-part ${rangeClassName}-${direction}`}>
+      <div
+        className={`${rangeClassName}-part ${rtlClass} ${rangeClassName}-${direction}`}
+      >
         {dateInputElement}
         <div style={{ outline: "none" }}>
           <CalendarHeader

@@ -137,6 +137,7 @@ class Demo extends React.Component {
     const state = this.state;
     const calendar = (
       <RangeCalendar
+        isRtl={true}
         hoverValue={state.hoverValue}
         onHoverChange={this.onHoverChange}
         showWeekNumber={false}
@@ -149,6 +150,7 @@ class Demo extends React.Component {
     );
     return (
       <Picker
+        isRtl={true}
         value={state.value}
         onChange={this.onChange}
         animation="slide-up"
@@ -182,6 +184,7 @@ ReactDOM.render(
     <h2>calendar</h2>
     <div style={{ margin: 10 }}>
       <RangeCalendar
+        isRtl={true}
         showToday={false}
         showWeekNumber
         dateInputPlaceholder={["start", "end"]}
@@ -198,7 +201,7 @@ ReactDOM.render(
       />
     </div>
     <br />
-
+    {"omiddddddd___________ddddddd"}
     <div style={{ margin: 20 }}>
       <Demo />
     </div>

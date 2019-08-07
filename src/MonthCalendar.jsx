@@ -10,10 +10,12 @@ import {
    calendarMixinDefaultProps
 } from "./mixin/CalendarMixin";
 import { commonMixinWrapper, propType, defaultProp } from "./mixin/CommonMixin";
-import moment from "jalali-moment";
+import moment from "moment"; //import moment from "./jalali/jalali-moment";
 
 class MonthCalendar extends React.Component {
    static propTypes = {
+      //NEw:
+      isRtl: PropTypes.bool,
       ...calendarMixinPropTypes,
       ...propType,
       monthCellRender: PropTypes.func,
@@ -26,6 +28,8 @@ class MonthCalendar extends React.Component {
 
    static defaultProps = Object.assign(
       {},
+      //NEw:
+      { isRtl: false },
       defaultProp,
       calendarMixinDefaultProps
    );
@@ -41,11 +45,18 @@ class MonthCalendar extends React.Component {
    }
 
    onKeyDown = event => {
-      const keyCode = event.keyCode;
+      let keyCode = event.keyCode;
       const ctrlKey = event.ctrlKey || event.metaKey;
       const stateValue = this.state.value;
       const { disabledDate } = this.props;
       let value = stateValue;
+
+      //NEw
+      if (this.props.isRtl) {
+         if (keyCode === KeyCode.LEFT) keyCode = KeyCode.RIGHT;
+         else if (keyCode === KeyCode.RIGHT) keyCode = KeyCode.LEFT;
+      }
+
       switch (keyCode) {
          case KeyCode.DOWN:
             value = stateValue.clone();
@@ -96,10 +107,18 @@ class MonthCalendar extends React.Component {
    render() {
       const { props, state } = this;
       const { mode, value } = state;
+      //NEw:
+      const rtlClass = this.props.isRtl ? "a-rtl" : "a-ltr";
+
       const children = (
-         <div className={`${props.prefixCls}-month-calendar-content`}>
+         //NEw:
+         // <div className={`${props.prefixCls}-month-calendar-content`}>
+         <div
+            className={`${props.prefixCls}-month-calendar-content ${rtlClass}`}
+         >
             <div className={`${props.prefixCls}-month-header-wrap`}>
                <CalendarHeader
+                  isRtl={this.props.isRtl}
                   prefixCls={props.prefixCls}
                   mode={mode}
                   value={value}
@@ -113,13 +132,16 @@ class MonthCalendar extends React.Component {
                />
             </div>
             <CalendarFooter
+               isRtl={this.props.isRtl}
                prefixCls={props.prefixCls}
                renderFooter={props.renderFooter}
             />
          </div>
       );
       return this.renderRoot({
-         className: `${props.prefixCls}-month-calendar`,
+         //NEw:
+         // className: `${props.prefixCls}-month-calendar`,
+         className: `${props.prefixCls}-month-calendar ${rtlClass}`,
          children
       });
    }
